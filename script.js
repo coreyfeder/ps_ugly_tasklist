@@ -16,42 +16,53 @@ const reset = () => {
     while (tasklist.childElementCount > 0) {
         tasklist.firstChild.remove();
     }
-    // for (let task of tasks) {
-        // console.log("removing task " + task.value);
-        // task.remove();
-    // };
     console.log("Earth scorched.");
 };
 resetBtn.addEventListener("click", reset)
 
-const yellow = document.querySelector('.yellow-background');
-console.log('taskBtn: ' + taskBtn);
+// const yellow = document.querySelector('.yellow-background');
+// console.log('taskBtn: ' + taskBtn);
 
-taskBtn.addEventListener("click", () => {
-    console.log("Button clicked!");
-
-    // get the user's text
-    // const input = document.querySelector('input');
-    // console.log('input: ' + input);
-    // console.log('input.value: ' + input.value);
+function addTask() {
     console.log('taskTxt: ' + taskTxt);
     console.log('taskTxt.value: ' + taskTxt.value);
     
     if (taskTxt.value) {
-        // input received
-        // create the list item
         const li = document.createElement("li");
-        // populate the line item
         li.textContent = taskTxt.value;
+        changeColor(li);
         console.log(li);
-        // append the li to the ul
         document.querySelector('ul').appendChild(li);
         taskTxt.value = "";
     } else {
         alert("You can't add Nothing to the list.");
     }
+}
+
+taskBtn.addEventListener("click", () => {
+    console.log("Button clicked!");
+    addTask();
 });
 
-const changeColor = (li) => {
-    console.log(li)
+// poor user experience when you can't hit Enter after typing.
+taskTxt.addEventListener("keypress", (event) => {
+    console.log("Key pressed...");
+    if (event.key === "Enter") {
+        console.log("Enter! We're off!");
+        // Cancel the default action, if needed
+        event.preventDefault();
+        addTask();
+    };
+});
+
+const changeColor = (elem) => {
+    let newColor = 'rgb('
+    + Math.floor(Math.random() * 256)
+    + ','
+    + Math.floor(Math.random() * 256)
+    + ','
+    + Math.floor(Math.random() * 256)
+    + ')';
+    elem.style.color = newColor;
+    console.log(newColor);
 }
