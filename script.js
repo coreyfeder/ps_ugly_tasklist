@@ -5,33 +5,48 @@
 console.log("Script running.")
 
 const resetBtn = document.getElementById("reset-btn");
+const taskBtn = document.getElementById("add-task-btn");
+const taskTxt = document.getElementById("task-txt");
 
 const reset = () => {
-    console.log("Reset button clicked! Scorch the earth!");
+    console.log("Reset button clicked!");
+    const tasklist = document.getElementById("tasklist");
+    const tasks = tasklist.children;
+    console.log('tasks: ' + tasks);
+    while (tasklist.childElementCount > 0) {
+        tasklist.firstChild.remove();
+    }
+    // for (let task of tasks) {
+        // console.log("removing task " + task.value);
+        // task.remove();
+    // };
+    console.log("Earth scorched.");
 };
+resetBtn.addEventListener("click", reset)
 
-const taskButton = document.querySelector("#add-task");
 const yellow = document.querySelector('.yellow-background');
-console.log(taskButton);
+console.log('taskBtn: ' + taskBtn);
 
-taskButton.addEventListener("click", () => {
+taskBtn.addEventListener("click", () => {
     console.log("Button clicked!");
 
     // get the user's text
-    const input = document.querySelector('input');
-    console.log(input);
-    console.log(input.value);  // the actual text
+    // const input = document.querySelector('input');
+    // console.log('input: ' + input);
+    // console.log('input.value: ' + input.value);
+    console.log('taskTxt: ' + taskTxt);
+    console.log('taskTxt.value: ' + taskTxt.value);
     
-    if (input.value) {
+    if (taskTxt.value) {
         // input received
         // create the list item
         const li = document.createElement("li");
         // populate the line item
-        li.textContent = input.value;
+        li.textContent = taskTxt.value;
         console.log(li);
         // append the li to the ul
         document.querySelector('ul').appendChild(li);
-        input.textContent = "";
+        taskTxt.value = "";
     } else {
         alert("You can't add Nothing to the list.");
     }
