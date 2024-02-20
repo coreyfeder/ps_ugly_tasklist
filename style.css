@@ -2,8 +2,36 @@
     box-sizing: border-box;
 }
 
-:root {
-    --color-main: rgb(207, 197, 121);
-    --color-secondary: rgb(142, 133, 97);
-    --color-tertiary: rgb(68, 63, 47);
+h1 {
+  font-size: clamp(
+    var(--fluid-type-min, 2vh),
+    calc(1rem + var(--fluid-type-target, 6vw)),
+    var(--fluid-type-max, 200vw)
+  );
+};
+
+h2 {
+
+};
+
+.container {
+    min-width: 200px;
+    width: 50%;
+    max-width: 800px;
+    border: black solid 1px;
+    margin: 8px;
+    display:block;
+};
+
+.contanier > * {
+    
+};
+input, button {
+    width: 50px;
+    padding: 0;
+    margin: 4px;
+};
+
+#taskbox {
+    
 }

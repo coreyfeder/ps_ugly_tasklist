@@ -9,17 +9,20 @@
 </head>
 
 <body>
-    <h1>My ToDo List</h1>
-    <button id="reset-btn">Wipe it out and start again.</button>
-
-    <h2>Tasks</h2>
-    <ul id="tasklist">
-        <li>Get shit done!</li>
-    </ul>
-
-    <input id="task-txt" type="text" />
-    <!-- inline event -->
-    <button id="add-task-btn">Add a new task</button>
+    <h1>ToDo</h1>
+    <div class="container">        
+        <button id="reset-btn">Wipe it out and start again.</button>
+        <div id="taskbox">
+            <h2>Tasks</h2>
+            <ul id="tasklist">
+                <li>Get shit done!</li>
+            </ul>
+        </div>
+        
+            <input id="task-txt" type="text" />
+        <!-- inline event -->
+        <div><button id="add-task-btn">Add a new task</button></div>
+    </div>
 
     <!-- hamsters, turn those wheels! -->
     <script src="script.js"></script>
